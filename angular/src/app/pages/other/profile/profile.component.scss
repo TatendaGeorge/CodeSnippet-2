@@ -1,0 +1,20 @@
+rd.s-card {
+  height: 10.5rem;
+  // overflow: hidden;
+}
+
+.s-card:hover {
+  outline: 1px solid #43D39E;
+}
+
+.bs-card {
+  min-height: 72vh !important;
+}
+
+.p-card {
+  min-height: 72vh !important;
+}
+
+.edit-btn:hover {
+  cursor: pointer;
+}

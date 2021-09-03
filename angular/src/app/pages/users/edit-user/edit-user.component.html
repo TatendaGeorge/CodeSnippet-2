@@ -1,0 +1,80 @@
+<ng-template #editUser let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Edit User</h5>
+    <button type="button" class="close" aria-hidden="true" (click)="modal.dismiss('Cross click')">×</button>
+  </div>
+  <div class="modal-body p-3">
+    <form (ngSubmit)="save()" [formGroup]="editUserForm">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">First Name</label>
+            <input class="form-control" placeholder="Enter First Name" type="text" name="firstName"
+              formControlName="firstName" [ngClass]="{'is-invalid': submitted && editUserForm.firstName.errors}"
+              required>
+            <div *ngIf="submitted && editUserForm.firstName.errors" class="invalid-feedback">
+              <span *ngIf="editUserForm.firstName.errors.required">This value is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Last Name</label>
+            <input class="form-control" placeholder="Enter Last Name" type="text" name="lastName"
+              formControlName="lastName" [ngClass]="{'is-invalid': submitted && editUserForm.lastName.errors}" required>
+            <div *ngIf="submitted && editUserForm.lastName.errors" class="invalid-feedback">
+              <span *ngIf="editUserForm.lastName.errors.required">This value is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Email Address</label>
+            <input class="form-control" placeholder="Enter Email Address" type="text" name="email"
+              formControlName="email" [ngClass]="{'is-invalid': submitted && editUserForm.email.errors}" required>
+            <div *ngIf="submitted && editUserForm.email.errors" class="invalid-feedback">
+              <span *ngIf="editUserForm.email.errors.required">This value is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Phone</label>
+            <input class="form-control" placeholder="Enter Phone Number" type="text" name="phone"
+              formControlName="phone" [ngClass]="{'is-invalid': submitted && editUserForm.phone.errors}" required>
+            <div *ngIf="submitted && editUserForm.phone.errors" class="invalid-feedback">
+              <span *ngIf="editUserForm.phone.errors.required">This value is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label class="control-label">Default Password</label>
+            <input class="form-control" placeholder="Enter Password" type="text" name="password"
+              formControlName="password" [ngClass]="{'is-invalid': submitted && editUserForm.password.errors}" required>
+            <div *ngIf="submitted && editUserForm.password.errors" class="invalid-feedback">
+              <span *ngIf="editUserForm.password.errors.required">This value is required.</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label class="control-label">Role</label>
+            <select class="form-control" name="roles" formControlName="roles"
+              [ngClass]="{'is-invalid': submitted && editUserForm.roles.errors}" required>
+              <option *ngFor="let option of roles" value="{{option.value}}"> {{ option.name }}</option>
+            </select>
+            <div *ngIf="submitted && editUserForm.roles.errors" class="invalid-feedback">
+              <div *ngIf="editUserForm.roles.errors.required">This value is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right pt-4">
+        <button type="button" class="btn btn-light" (click)="modal.dismiss('Cross click')">Close</button>
+        <button type="submit" class="btn btn-success save-event ml-1">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

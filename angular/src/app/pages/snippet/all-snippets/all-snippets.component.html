@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row page-title align-items-center">
+    <div class="col-sm-4 col-xl-6">
+      <h4 class="mb-1 mt-0">Snippet Details</h4>
+    </div>
+
+  </div>
+
+
+  <div class="text-left pt-4">
+    <!-- <button type="button" class="btn btn-light" (click)="modal.dismiss('Cross click')">Close</button> -->
+    <button type="button" class="btn btn-danger" (click)="Back()">
+      <i class="uil uil-previous"></i></button>
+  </div>
+
+  <br>
+
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <form class="form-horizontal">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label class="col-lg-2 col-form-label">Name of Snippet</label>
+                  <div class="col-lg-10">
+                    <input type="text" class="form-control" value="Random Values" disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2 col-form-label">Description</label>
+                  <div class="col-lg-10">
+                    <textarea class="form-control" rows="3"
+                      disabled>C# Random class provides functionality to generate random numbers in C#. The following code returns a random number between the min and the max range.</textarea>
+                  </div>
+                </div>
+                <label class="col-lg-2 col-form-label">Code Snippet</label>
+                <div class="col-10">
+                  <pre>
+                    <code [highlight]="code" [lineNumbers]="true" (highlighted)="onHighlight($event)"></code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

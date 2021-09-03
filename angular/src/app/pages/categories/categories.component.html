@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row page-title align-items-center">
+    <div class="col-sm-4 col-xl-6">
+      <h4 class="mb-1 mt-0">Categories</h4>
+    </div>
+    <!-- Button Start -->
+    <div class="col-sm-8 col-xl-6">
+      <form class="form-inline float-sm-right mt-3 mt-sm-0">
+        <div class="form-group mb-sm-0 mr-2">
+          <div class="btn">
+            <button type="button" class="btn btn-primary" (click)="newCategory()">
+              <i class="uil uil-plus-circle mr-1"></i>New Category
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Button End -->
+
+  <!-- <div class="col text-right">
+    <div class="btn-group mb-1">
+      <div class="btn-group btn-group-toggle">
+        <div ngbDropdown class="btn-group">
+          <button
+            type="button"
+            class="btn btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+            ngbDropdownToggle
+            aria-expanded="false"
+          >
+            <i class="uil-plus-circle"></i>
+            New Category
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="row">
+
+    <div class="col-xl-4" *ngFor="let cat of categories">
+      <div class="card" style="height: 7rem;" (click)="loadSnippets()">
+        <div class="card-body pt-8">
+          <div class="dropdown mt-2 float-right" ngbDropdown (click)="$event.stopPropagation();">
+            <a href="javascript: void(0);" class="dropdown-toggle arrow-none text-muted" ngbDropdownToggle>
+              <i class="uil uil-ellipsis-v"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
+              <!-- item -->
+              <a href="javascript: void(0);" class="dropdown-item" (click)="editCategory(cat)"><i
+                  class="uil uil-edit-alt mr-2"></i>Edit</a>
+
+              <div class="dropdown-divider"></div>
+
+              <!-- item -->
+              <a href="javascript: void(0);" (click)="delete(cat)" class="dropdown-item text-danger"><i
+                  class="uil uil-trash mr-2"></i>Delete</a>
+            </div>
+          </div>
+
+
+          <h5>{{cat?.categoryType}}</h5>
+          <!-- <button type="button" class="btn btn-warning" (click)="$event.stopPropagation();editCategory(cat)">
+            <i class="uil uil-plus-circle mr-1"></i>Edit
+          </button> -->
+
+          <!-- <a href="#" class="topics">Topics (30) </a>
+
+            <a href="#" class="snippets">Snippets (45)</a> -->
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<app-new-category #newCategoryModal></app-new-category>
+<app-edit-category #editCategoryModal></app-edit-category>

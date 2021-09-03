@@ -1,0 +1,15 @@
+.card {
+  cursor: pointer;
+  background: #fff;
+  // text-align: center;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left {
+  display: inline-block;
+}
+
+.right {
+  // display: inline-block;
+  float: right;
+}

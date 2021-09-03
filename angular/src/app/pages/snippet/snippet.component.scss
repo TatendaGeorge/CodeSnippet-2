@@ -1,0 +1,18 @@
+.card {
+  cursor: pointer;
+  background: #fff;
+  // text-align: center;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover{
+  outline: 1px solid #5369F8;
+}
+.left {
+  display: inline-block;
+}
+
+.right {
+  // display: inline-block;
+  float: right;
+}

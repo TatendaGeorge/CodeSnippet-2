@@ -1,0 +1,92 @@
+<div class="container-fluid">
+  <div class="row page-title align-items">
+    <div class="col-sm-4 col-xl-6">
+      <h4 class="mb-1 mt-0"> Edit: {{ snippet?.name }}</h4>
+    </div>
+  </div>
+  <form (ngSubmit)="update()" [formGroup]="newSnippetForm">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="form-horizontal">
+              <!--Name Field-->
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <label class="control-label">Name</label>
+                    <input class="form-control" placeholder="Enter a title for this snippet" type="text" name="name"
+                      formControlName="name" required />
+                    <!-- <div *ngIf="form.name.touched && form.name.errors" class="invalid-feedback">
+                      <span *ngIf="form.name.errors.required">This value is required.</span>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label class="control-label">Category</label>
+                    <ng-select formControlName="categoryId" placeholder="Select a Category for this snippet">
+                      <ng-option *ngFor="let cat of categories" [value]="cat.id">{{ cat.categoryType }}</ng-option>
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="col-3 d-inline-block">
+                  <div class="form-group">
+                    <label class="control-label">Topic</label>
+                    <ng-select formControlName="topicId" placeholder="Select a Topic for this snippet">
+                      <ng-option *ngFor="let topic of topics" [value]="topic.id">{{ topic.title }}</ng-option>
+                    </ng-select>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <button class="btn btn-primary dropdown-toggle" type="button" (click)="newTopic()">New Topic</button>
+                </div>
+              </div>
+              <!--Description Field-->
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control" placeholder="Description of Snippet" type="text" name="description"
+                      formControlName="description" rows="6"
+                      required></textarea>
+                    <!-- <div *ngIf="form.description.touched && form.description.errors" class="invalid-feedback">
+                      <span *ngIf="form.description.errors.required">This value is required.</span>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+              <!--Code Snippet-->
+              <div class="row">
+                <div class="col-12">
+                  <div class="float-left">
+                    <!-- <button type="button" class="btn btn-primary btn-round" (click)="newSnippet()">
+                      <i class="uil uil-edit-alt"></i> Click here to Write Code for your Snippet</button> -->
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <pre *ngIf="code">
+                    <code [highlight]="code" (click)="editCode()" [lineNumbers]="true" (highlighted)="onHighlight($event)"></code>
+                  </pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-right pt-4">
+              <button type="submit" class="btn btn-primary save-event ml-1" [disabled]="newSnippetForm.invalid">
+                Save
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-snippet-modal #newSnippetModal (snippetAdded)="onSnippetAdded($event)"></app-snippet-modal>
+<app-topic-modal #newTopicModal (topicAdded)="getTopics()"></app-topic-modal>
+
